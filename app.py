@@ -4,6 +4,7 @@ import pickle
 import csv
 from flask import Flask
 from flask import Flask, render_template, request
+import csv
 
 app = Flask(__name__)
 
@@ -23,6 +24,13 @@ with open('data.csv','w', newline='') as f:
     for i in data_value:
         writer.writerow(i)
 
+with open('data.csv', mode ='r')as file: 
+  csvFile = csv.reader(file) 
+  data_read_value = [] 
+  data_read_value2 = data_read_value[1:]
+  for lines in csvFile: 
+        data_read_value.append(lines) 
+
 @app.route('/', methods=['GET','POST'])
 def getrates():
     if request.method == 'GET':
@@ -34,7 +42,7 @@ def getrates():
         for i in data_value:
             if i[1] == currency:
                bid = i[2]
-              
+           
         cost = int(number) * bid
 
         return render_template ('index2.html', cost = cost)

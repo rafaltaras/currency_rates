@@ -4,36 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+  <h1>Dane z API Narodowego Banku Polskiego</h1><br>  
   <form id="getrates" action="" method="POST">
-
-    <label for="code">Currency</label>
-      <select name="code" id="code">
-        <option name='code' value="USD">USD</option>
-        <option name='code' value="AUD">AUD</option>
-        <option name='code' value="CAD">CAD</option>
-        <option name='code' value="EUR">EUR</option>
-        <option name='code' value="HUF">HUF</option>
-        <option name='code' value="CHF">CHF</option>
-        <option name='code' value="GBP">GBP</option>
-        <option name='code' value="JPY">JPY</option>
-        <option name='code' value="CZK">CZK</option>
-        <option name='code' value="DKK">DKK</option>
-        <option name='code' value="NOK">NOK</option>
-        <option name='code' value="SEK">SEK</option>
-        <option name='code' value="XDR">XDR</option>
-      </select><br> 
+      <label for="code">Currency</label>      
+        <select name="code" id="code">
+          <option name='code' value="USD">USD</option>
+          <option name='code' value="AUD">AUD</option>
+          <option name='code' value="CAD">CAD</option>
+          <option name='code' value="EUR">EUR</option>
+          <option name='code' value="HUF">HUF</option>
+          <option name='code' value="CHF">CHF</option>
+          <option name='code' value="GBP">GBP</option>
+          <option name='code' value="JPY">JPY</option>
+          <option name='code' value="CZK">CZK</option>
+          <option name='code' value="DKK">DKK</option>
+          <option name='code' value="NOK">NOK</option>
+          <option name='code' value="SEK">SEK</option>
+          <option name='code' value="XDR">XDR</option>
+        </select><br> 
 
     <label for="number">Amount</label>
       <input type="number" id="number" name="number"> <br>        
-      <input type="submit" value="Przelicz"> 
+      <input type="submit" value="Przelicz">
 
   </form>
 </body>
 </html>
 
-
-       
   
