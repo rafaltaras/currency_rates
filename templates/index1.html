@@ -7,21 +7,32 @@
     <title>Document</title>
 </head>
 <body>
-  <form action="" method="POST">
-    <label for="code">Choose a code:</label>
-      <select name="select" id="code">
-        <option value="USD">USD</option>
-        <option value="AUD">AUD</option>
-        <option value="CAD">CAD</option>
-        <option value="EUR">EUR</option><br>
-      </select>
-      <label for="quantity">Ile chcesz kupić</label>
-      <input type="number" id="number" name="number"><br>        
-      <input type="submit" value="Przelicz">      
+  <form id="getrates" action="" method="POST">
+
+    <label for="code">Currency</label>
+      <select name="code" id="code">
+        <option name='code' value="USD">USD</option>
+        <option name='code' value="AUD">AUD</option>
+        <option name='code' value="CAD">CAD</option>
+        <option name='code' value="EUR">EUR</option>
+        <option name='code' value="HUF">HUF</option>
+        <option name='code' value="CHF">CHF</option>
+        <option name='code' value="GBP">GBP</option>
+        <option name='code' value="JPY">JPY</option>
+        <option name='code' value="CZK">CZK</option>
+        <option name='code' value="DKK">DKK</option>
+        <option name='code' value="NOK">NOK</option>
+        <option name='code' value="SEK">SEK</option>
+        <option name='code' value="XDR">XDR</option>
+      </select><br> 
+
+    <label for="number">Amount</label>
+      <input type="number" id="number" name="number"> <br>        
+      <input type="submit" value="Przelicz"> 
+
   </form>
 </body>
 </html>
-
 
 
        
