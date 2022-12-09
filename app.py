@@ -5,7 +5,7 @@ import csv
 from flask import Flask
 from flask import Flask, render_template
 
-# app = Flask(__name__)
+app = Flask(__name__)
 
 res = requests.get("http://api.nbp.pl/api/exchangerates/tables/C?format=json")
 data = res.json()
@@ -23,11 +23,14 @@ with open('data.csv','w', newline='') as f:
     for i in data_value:
         writer.writerow(i)
 
-# @app.route('/', methods=['GET','POST'])
-# def getrates():
-#     return render_template('index1.html')
+@app.route('/', methods=['GET','POST'])
+def getrates():
+    return render_template('index1.html')
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
