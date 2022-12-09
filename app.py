@@ -17,17 +17,11 @@ data_value=[]
 for data in data_rates:
     data_value.append(list(data.values()))
 
-print(headers)
-for i in data_value:
-    print(i)
-
 with open('data.csv','w', newline='') as f:
     writer = csv.writer(f, delimiter=';')
     writer.writerow(headers)
     for i in data_value:
         writer.writerow(i)
-
-
 
 # @app.route('/', methods=['GET','POST'])
 # def getrates():
@@ -35,7 +29,5 @@ with open('data.csv','w', newline='') as f:
 
 # if __name__ == '__main__':
 #     app.run(debug=True)
-
-
 
 
