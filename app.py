@@ -25,11 +25,12 @@ with open('data.csv','w', newline='') as f:
         writer.writerow(i)
 
 with open('data.csv', mode ='r')as file: 
-  csvFile = csv.reader(file) 
+  csvFile = csv.reader(file, delimiter=";") 
   data_read_value = [] 
-  data_read_value2 = data_read_value[1:]
   for lines in csvFile: 
         data_read_value.append(lines) 
+
+
 
 @app.route('/', methods=['GET','POST'])
 def getrates():
@@ -39,7 +40,7 @@ def getrates():
         currency = request.form['code']
         number = request.form['number']
 
-        for i in data_value:
+        for i in data_read_value:
             if i[1] == currency:
                bid = i[2]
            

@@ -1,3 +1,9 @@
 h1 {
     color: green
   }
+
+form {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+}
