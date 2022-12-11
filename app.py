@@ -1,53 +1,26 @@
-import requests
-import json
-import pickle
-import csv
 from flask import Flask
 from flask import Flask, render_template, request
-import csv
+from lib.data_manager import data_manager
 
 app = Flask(__name__)
 
-res = requests.get("http://api.nbp.pl/api/exchangerates/tables/C?format=json")
-data = res.json()
-data_rates = data[0].get('rates')
-
-
-headers = ["currency", "code", "bid", "ask"]
-data_value=[]
-for data in data_rates:
-    data_value.append(list(data.values()))
-
-with open('data.csv','w', newline='') as f:
-    writer = csv.writer(f, delimiter=';')
-    writer.writerow(headers)
-    for i in data_value:
-        writer.writerow(i)
-
-with open('data.csv', mode ='r')as file: 
-  csvFile = csv.reader(file, delimiter=";") 
-  data_read_value = [] 
-  for lines in csvFile: 
-        data_read_value.append(lines) 
-
-
-
 @app.route('/', methods=['GET','POST'])
 def getrates():
+    rates = data_manager.get_rates()
+    data_manager.save_to_csv(rates)
+    rates_from_csv = data_manager.get_from_csv()
+
     if request.method == 'GET':
         return render_template('index1.html')
+
     if request.method == 'POST':
         currency = request.form['code']
         number = request.form['number']
-
-        for i in data_read_value:
+        for i in rates_from_csv:
             if i[1] == currency:
                bid = i[2]
-           
         cost = int(number) * bid
-
         return render_template ('index2.html', cost = cost)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
