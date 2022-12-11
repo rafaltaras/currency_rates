@@ -1,7 +1,5 @@
 import requests
 import csv
-import json
-
 
 class DataManager:
     def __init__(self, csv_file_name):
