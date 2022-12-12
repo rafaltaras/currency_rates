@@ -8,20 +8,22 @@ app = Flask(__name__)
 def getrates():
     rates = data_manager.get_rates()
     data_manager.save_to_csv(rates)
-    rates_from_csv = data_manager.get_from_csv()
-
     if request.method == 'GET':
         return render_template('index1.html')
-
     if request.method == 'POST':
         currency = request.form['code']
         number = request.form['number']
-        for i in rates_from_csv:
-            if i[1] == currency:
-               bid = i[2]
-        cost = int(number) * bid
+        cost = get_cost(currency, number)
         return render_template ('index2.html', cost = cost)
 
+def get_cost(currency, number):
+    rates_from_csv = data_manager.get_from_csv()
+    for rate in rates_from_csv:
+        if rate[1] == currency:
+            bid = rate[2]
+    cost = round((number * float(bid)),2)
+    return cost
+    
 if __name__ == '__main__':
     app.run(debug=True)
 
